@@ -60,7 +60,13 @@ void test_spmv(int num_arguments, char** argument_array) {
 
   // --
   // GPU Run
-  float gpu_elapsed = gunrock::spmv::run(G, x.data().get(), y.data().get());
+  float gpu_elapsed = 0.0f;
+  int num_runs = 5;
+
+  for (auto i = 0; i < num_runs; i++)
+    gpu_elapsed += gunrock::spmv::run(G, x.data().get(), y.data().get());
+
+  gpu_elapsed /= num_runs;
 
   // --
   // CPU Run
