@@ -61,12 +61,7 @@ void test_pr(int num_arguments, char** argument_array) {
   // --
   // GPU Run
 
-  float gpu_elapsed = 0.0f;
-  int num_runs = 5;
-
-  for (auto i = 0; i < num_runs; i++)
-    gpu_elapsed += gunrock::pr::run(G, alpha, tol, p.data().get());
-  gpu_elapsed /= num_runs;
+  float gpu_elapsed = gunrock::pr::run(G, alpha, tol, p.data().get());
 
   // --
   // Log + Validate

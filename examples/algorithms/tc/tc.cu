@@ -99,14 +99,9 @@ void test_tc(int num_arguments, char** argument_array) {
   // --
   // GPU Run
 
-  float gpu_elapsed = 0.0f;
-  int num_runs = 5;
-
   std::size_t total_triangles = 0;
-  for (auto i = 0; i < num_runs; i++)
-    gpu_elapsed += tc::run(G, params.reduce_all_triangles,
+  float gpu_elapsed = tc::run(G, params.reduce_all_triangles,
                               triangles_count.data().get(), &total_triangles);
-  gpu_elapsed /= num_runs;
 
   // --
   // Log

@@ -68,13 +68,8 @@ void test_bfs(int num_arguments, char** argument_array) {
   // --
   // Run problem
 
-  float gpu_elapsed = 0.0f;
-  int num_runs = 5;
-
-  for (auto i = 0; i < num_runs; i++)
-    gpu_elapsed += gunrock::bfs::run(G, single_source, distances.data().get(), predecessors.data().get());
-
-  gpu_elapsed /= num_runs;
+  float gpu_elapsed = gunrock::bfs::run(
+      G, single_source, distances.data().get(), predecessors.data().get());
 
   // --
   // CPU Run

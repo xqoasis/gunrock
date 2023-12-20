@@ -66,13 +66,7 @@ void test_kcore(int num_arguments, char** argument_array) {
   // --
   // GPU Run
 
-  float gpu_elapsed = 0.0f;
-  int num_runs = 5;
-
-  for (auto i = 0; i < num_runs; i++)
-    gpu_elapsed += gunrock::kcore::run(G, k_cores.data().get());
-
-  gpu_elapsed /= num_runs;
+  float gpu_elapsed = gunrock::kcore::run(G, k_cores.data().get());
 
   // --
   // CPU Run
